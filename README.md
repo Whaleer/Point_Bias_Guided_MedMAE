@@ -4,10 +4,6 @@ Self-supervised Medical MAE with point cloud-bias learning
 
 
 
-
-
-
-
 ---
 ### Necessary Packages and Versions
 ```
