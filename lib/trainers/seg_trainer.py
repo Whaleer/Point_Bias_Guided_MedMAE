@@ -15,8 +15,8 @@ import torch.nn.functional as F
 import sys
 sys.path.append('..')
 
-import lib.models
-import lib.networks
+import lib.models as models
+import lib.networks as networks
 from lib.utils import SmoothedValue, concat_all_gather, LayerDecayValueAssigner
 
 import wandb
@@ -64,14 +64,14 @@ class SegTrainer(BaseTrainer):
         if args.test:
             self.metric_funcs = OrderedDict([
                                         ('Dice', 
-                                          DiceMetric),
+                                          DiceMetric(include_background=False if args.dataset == 'btcv' else True)),
                                         ('HD',
                                           partial(compute_hausdorff_distance, percentile=95))
                                         ])
         else:
             self.metric_funcs = OrderedDict([
                                         ('Dice', 
-                                          DiceMetric)
+                                          DiceMetric(include_background=False if args.dataset == 'btcv' else True))
                                         ])
 
     def build_model(self):
@@ -420,7 +420,7 @@ class SegTrainer(BaseTrainer):
                     log_meters = meters
                 else:
                     log_meters = ts_meters
-                metric = metric_func(y_pred=output_convert, y=target_convert, include_background=False if args.dataset == 'btcv' else True)
+                metric = metric_func(y_pred=output_convert, y=target_convert)
                 metric = metric.cpu().numpy()
                 compute_avg_metric(metric, log_meters, metric_name, batch_size, args)
                 for k in range(metric.shape[-1]):

@@ -11,7 +11,7 @@ wandb_id:
 # dataset
 dataset: btcv
 json_list: 'btcv.json'
-data_path: /root/lbx/dataset/BTCV/RawData/Training
+data_path: /root/lbx/dataset/BTCV/RawData
 
 # output
 output_dir: /root/lbx/result/lbx/ssl-framework/${run_name}
@@ -41,7 +41,7 @@ start_epoch: 0
 warmup_epochs: 100
 epochs: 10000
 workers: 8
-resume:
+resume: 
 
 # model
 patchembed: 'PatchEmbed3D'
