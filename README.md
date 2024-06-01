@@ -34,6 +34,13 @@ python main.py \
 The default configurations are set in `configs/mae3d_btcv_1gpu.yaml`. You can overwrite the configurations by passing arguments with the corresponding key names through the command line, e.g., `mask_ratio`. We use Wandb to monitor the training process and visualize the masked reconstruction. During the training, the output including checkpoints and Wandb local files are all stored in the specified `output_dir` value in the configurations.
 The core MAE codes locate in `lib/models/mae3d.py`.
 
+```
+python main.py \
+        configs/mae3d_msdbrats_1gpu.yaml \
+        --mask_ratio=0.125 \
+        --run_name='mae3d_sincos_vit_base_msd_brats'
+```
+
 ### Stage 2: UNETR Fine-tuning
 The run scripts is in directory scripts
 ```

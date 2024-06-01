@@ -31,7 +31,7 @@ cache_rate: 1.
 
 # trainer
 trainer_name: MAE3DTrainer
-batch_size: 6
+batch_size: 2
 vis_batch_size: 1
 start_epoch: 0
 warmup_epochs: 10
@@ -75,6 +75,7 @@ dist_backend: nccl
 distributed:
 rank: 0
 ngpus_per_node:
+disable_wandb: 0
 
 # randomness
 seed:
