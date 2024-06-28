@@ -12,13 +12,13 @@ disable_wandb: 0
 # dataset
 dataset: msd_brats
 # data_path: /data/leizhou/
-data_path: /nvme/zhoulei/MSD
+data_path: /root/autodl-tmp/Task01_BrainTumour
 data_seed: 12345
 ts_fold: 0
 ts_ratio: 0.
 
 # output
-output_dir: /nvme/zhoulei/ssl-framework/${run_name}
+output_dir: /root/lbx/finetune_result/lbx/ssl-framework/${run_name}
 ckpt_dir: ${output_dir}/ckpts
 
 # data preprocessing
@@ -42,7 +42,7 @@ start_epoch: 0
 warmup_epochs: 10
 epochs: 400
 workers: 8
-pretrain:
+pretrain: /root/lbx/result/lbx/ssl-framework/mae3d_sincos_vit_base_msd_brats/ckpts/checkpoint_0999.pth.tar
 resume:
 
 # drop

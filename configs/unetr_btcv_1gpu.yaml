@@ -45,7 +45,7 @@ start_epoch: 0
 warmup_epochs: 50
 epochs: 5000
 workers: 8
-pretrain:
+pretrain: /root/lbx/result/lbx/ssl-framework/mae3d_sincos_vit_base_btcv_mr125/ckpts/checkpoint_9999.pth.tar
 resume:
 
 # drop

@@ -51,4 +51,13 @@ python main.py \
         --run_name=unetr3d_vit_base_btcv_lr3.44e-2_mr125_10ke_pretrain_5000e \
         --pretrain=$YOUR Pre-Trained MAE Checkpoint$
 ```
+
+```
+python main.py \
+        configs/unetr_msdbrats_1gpu.yaml \
+        --lr=3.44e-2 \
+        --batch_size=6 \
+        --run_name=unetr3d_vit_base_msdbrats_lr3.44e-2_mr125_10ke_pretrain_5000e \
+        --pretrain=$YOUR Pre-Trained MAE Checkpoint$
+```
 The core UNETR codes locate in `lib/models/unetr3d.py`.

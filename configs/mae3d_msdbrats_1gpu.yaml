@@ -38,7 +38,7 @@ warmup_epochs: 10
 epochs: 1000
 workers: 8
 pretrain:
-resume:
+resume:/root/lbx/result/lbx/ssl-framework/mae3d_sincos_vit_base_msd_brats/ckpts/checkpoint_0199.pth.tar
 
 # model
 patchembed: 'PatchEmbed3D'

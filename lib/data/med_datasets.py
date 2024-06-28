@@ -110,9 +110,9 @@ def get_json_valset(args, val_transform=None):
     return val_ds
 
 def get_msd_trainset(args, workers, train_transform=None, task='Task01_BrainTumour', nfolds=5, ts_fold=0, seed=12345):
-    fold_list = list(range(nfolds))
+    fold_list = list(range(nfolds-(nfolds-2)))
     fold_list.remove(ts_fold)
-    assert len(fold_list) == nfolds - 1
+    assert len(fold_list) == (nfolds-(nfolds-2))-1
     data_dir = args.data_path
     cvdataset = CrossValidation(
                     dataset_cls=DecathlonDataset,
