@@ -129,6 +129,7 @@ class UNETR3D(nn.Module):
         x_in in shape of [BCHWD]
         """
         s_time = time.perf_counter()
+        # print(f"Encoder class name: {self.encoder.__class__.__name__}")
         x, hidden_states = self.encoder(x_in, time_meters=time_meters)
         if time_meters is not None:
             torch.cuda.synchronize()

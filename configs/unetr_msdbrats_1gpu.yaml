@@ -12,7 +12,7 @@ disable_wandb: 0
 # dataset
 dataset: msd_brats
 # data_path: /data/leizhou/
-data_path: /root/autodl-tmp/Task01_BrainTumour
+data_path: /root/autodl-tmp
 data_seed: 12345
 ts_fold: 0
 ts_ratio: 0.

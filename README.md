@@ -47,9 +47,9 @@ The run scripts is in directory scripts
 python main.py \
         configs/unetr_btcv_1gpu.yaml \
         --lr=3.44e-2 \
-        --batch_size=6 \
-        --run_name=unetr3d_vit_base_btcv_lr3.44e-2_mr125_10ke_pretrain_5000e \
-        --pretrain=$YOUR Pre-Trained MAE Checkpoint$
+        --batch_size=1 \
+        --run_name=unetr3d_vit_base_btcv_lr3.44e-2_mr125_10ke_pretrain_9999e_2024_10_25
+
 ```
 
 ```
@@ -57,7 +57,7 @@ python main.py \
         configs/unetr_msdbrats_1gpu.yaml \
         --lr=3.44e-2 \
         --batch_size=6 \
-        --run_name=unetr3d_vit_base_msdbrats_lr3.44e-2_mr125_10ke_pretrain_5000e \
+        --run_name=unetr3d_vit_base_msdbrats_lr3.44e-2_mr125_10ke_pretrain_5000e_2024_10_25 \
         --pretrain=$YOUR Pre-Trained MAE Checkpoint$
 ```
 The core UNETR codes locate in `lib/models/unetr3d.py`.

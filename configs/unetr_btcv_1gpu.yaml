@@ -15,7 +15,7 @@ json_list: 'btcv.json'
 data_path: /root/lbx/dataset/BTCV/RawData
 
 # output
-output_dir: /root/lbx/finetune_result/lbx/ssl-framework/${run_name}
+output_dir: /root/lbx/finetune_result/ssl-framework/${run_name}
 ckpt_dir: ${output_dir}/ckpts
 
 # data preprocessing
@@ -43,7 +43,7 @@ batch_size: 1
 val_batch_size: 1 # per gpu
 start_epoch: 0
 warmup_epochs: 50
-epochs: 5000
+epochs: 1000
 workers: 8
 pretrain: /root/lbx/result/lbx/ssl-framework/mae3d_sincos_vit_base_btcv_mr125/ckpts/checkpoint_9999.pth.tar
 resume:
@@ -83,10 +83,10 @@ weight_decay: 0.05 #1e-5
 layer_decay: 0.75
 
 # logging
-# vis_freq: 100
+vis_freq: 50
 vis_batch_size: 4
 save_freq: 1000
-eval_freq: 100
+eval_freq: 20
 print_freq: 1
 
 # distributed processing

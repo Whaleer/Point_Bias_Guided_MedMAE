@@ -59,7 +59,7 @@ decoder_num_heads: 12
 
 # optimizer
 type: adamw
-lr: 1e-2
+lr: 6.4e-3
 beta1: 0.9
 beta2: 0.95
 weight_decay: 0.05

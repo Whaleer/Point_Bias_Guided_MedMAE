@@ -233,6 +233,7 @@ class SegTrainer(BaseTrainer):
                 torch.distributed.barrier()
             
             if epoch == args.start_epoch:
+                # self.vis_policy()
                 self.evaluate(epoch=epoch, niters=niters)
 
             # train for one epoch
@@ -240,6 +241,8 @@ class SegTrainer(BaseTrainer):
 
             # evaluate after each epoch training
             if (epoch + 1) % args.eval_freq == 0:
+                self.visualize()
+                # self.vis_policy()
                 metric_list = self.evaluate(epoch=epoch, niters=niters)
                 metric = metric_list[0]
                 if len(metric_list) == 2:
@@ -651,6 +654,7 @@ class SegTrainer(BaseTrainer):
         args = self.args
         loader = self.vis_dataloader
         model = self.wrapped_model
+        print(f"Model class name: {model.__class__.__name__}")
 
         model.eval()
 
@@ -663,6 +667,7 @@ class SegTrainer(BaseTrainer):
             # inference to get policy list
             # pdb.set_trace()
             output, policy_list = model(image, return_policy=True) # policy list of [num_layers+1] 0-or-1 tensors with shape of [B, L+1]
+            # output, policy_list = model(image) # policy list of [num_layers+1] 0-or-1 tensors with shape of [B, L+1]
 
             print("start saving segmentation image")
 
