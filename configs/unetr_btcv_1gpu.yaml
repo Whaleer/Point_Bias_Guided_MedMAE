@@ -15,7 +15,8 @@ json_list: 'btcv.json'
 data_path: /root/lbx/dataset/BTCV/RawData
 
 # output
-output_dir: /root/lbx/finetune_result/ssl-framework/${run_name}
+# /root/autodl-tmp/result/lbx/ssl-framework/${run_name}
+output_dir: /root/autodl-tmp/finetune_result/ssl-framework/${run_name}
 ckpt_dir: ${output_dir}/ckpts
 
 # data preprocessing

@@ -197,3 +197,63 @@ class MAE3D(nn.Module):
             return loss, x.detach(), recon.detach(), masked_x.detach()
         else:
             return loss
+        
+def main():
+    # 定义模拟的输入参数和网络参数
+    class Args:
+        input_size = (96, 96, 96)   # 输入尺寸
+        patch_size = (16, 16, 16)      # Patch大小
+        in_chans = 1                # 输入通道数
+        encoder_embed_dim = 768     # 编码器嵌入维度
+        decoder_embed_dim = 384     # 解码器嵌入维度
+        encoder_depth = 12           # 编码器深度
+        decoder_depth = 8           # 解码器深度
+        encoder_num_heads = 12       # 编码器多头注意力头数
+        decoder_num_heads = 12       # 解码器多头注意力头数
+        mask_ratio = 0.75            # Mask比例
+        pos_embed_type = 'sincos'   # 位置嵌入类型
+        patchembed = "PatchEmbed3D" # Patch embedding实现类名
+
+    args = Args()
+    
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Using device: {device}")
+
+    # 模拟输入
+    batch_size = 2
+    input_tensor = torch.randn(batch_size, args.in_chans, *args.input_size, device=device)
+
+    # 构建编码器和解码器
+    class DummyEncoder(nn.Module):
+        def __init__(self, patch_size, in_chans, embed_dim, depth, num_heads, embed_layer):
+            super().__init__()
+            self.net = nn.Linear(in_chans * np.prod(patch_size), embed_dim)
+
+        def forward(self, x, pos_embed):
+            return self.net(x)
+
+    class DummyDecoder(nn.Module):
+        def __init__(self, patch_size, num_classes, embed_dim, depth, num_heads):
+            super().__init__()
+            self.net = nn.Linear(embed_dim, num_classes)
+
+        def forward(self, x):
+            return self.net(x)
+
+    encoder = DummyEncoder
+    decoder = DummyDecoder
+
+    # 实例化MAE3D模型
+    model = MAE3D(encoder=encoder, decoder=decoder, args=args).to(device)
+
+    # 测试模型
+    loss, x_orig, recon, masked_x = model(input_tensor, return_image=True)
+
+    # 打印输出结果
+    print(f"Loss: {loss.item()}")
+    print(f"Original Input Shape: {x_orig.shape}")
+    print(f"Reconstructed Shape: {recon.shape}")
+    print(f"Masked Input Shape: {masked_x.shape}")
+
+if __name__ == "__main__":
+    main()

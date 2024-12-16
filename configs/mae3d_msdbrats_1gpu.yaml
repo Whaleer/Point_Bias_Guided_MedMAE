@@ -10,12 +10,12 @@ wandb_id:
 
 # dataset
 dataset: msd_brats
-data_path: /root/autodl-tmp/Task01_BrainTumour
+data_path: /root/autodl-tmp
 data_seed: 12345
 ts_fold: 0
 
 # output
-output_dir: /root/lbx/result/lbx/ssl-framework/${run_name}
+output_dir: /root/autodl-tmp/result/lbx/ssl-framework/${run_name}
 ckpt_dir: ${output_dir}/ckpts
 
 # data preprocessing
@@ -38,7 +38,7 @@ warmup_epochs: 10
 epochs: 1000
 workers: 8
 pretrain:
-resume:/root/lbx/result/lbx/ssl-framework/mae3d_sincos_vit_base_msd_brats/ckpts/checkpoint_0199.pth.tar
+resume:
 
 # model
 patchembed: 'PatchEmbed3D'
